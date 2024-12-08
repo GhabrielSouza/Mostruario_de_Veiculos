@@ -1,0 +1,3 @@
+interface ImarcaCarro {
+  marca: string;
+}
