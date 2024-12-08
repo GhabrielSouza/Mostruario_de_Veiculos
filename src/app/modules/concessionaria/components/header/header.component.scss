@@ -1,0 +1,65 @@
+:host {
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--rich-black);
+    padding: 0.5em 2em;
+  }
+
+  .header_logo .header_logo_link {
+    font-family: "Krona One", sans-serif;
+    color: var(--white);
+  }
+
+  .header_navegacao,
+  .header_opcoes {
+    .header_navegacao_nav_ul,
+    .header_opcoes_ul {
+      display: flex;
+      gap: 50px;
+    }
+  }
+
+  .header_navegacao_nav_ul_item,
+  .header_opcoes_ul_item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .header_navegacao_nav_ul_item a,
+  .header_opcoes_ul_item a {
+    font-family: "Montserrat", sans-serif;
+    color: var(--white);
+    position: relative;
+  }
+
+  .header_navegacao_nav_ul_item a::after {
+    content: " ";
+    width: 0%;
+    height: 2px;
+    background: var(--cambridge-blue);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: 0.5s ease-in-out;
+  }
+
+  .header_navegacao_nav_ul_item a:hover {
+    color: var(--cambridge-blue);
+  }
+
+  .header_navegacao_nav_ul_item a:hover::after {
+    width: 100%;
+  }
+
+  .header_opcoes_ul_item_img {
+    background: var(--cambridge-blue);
+    padding: 0.3em 0.5em;
+    border-radius: 50%;
+  }
+
+  @media (max-width: 750px) {
+  }
+}

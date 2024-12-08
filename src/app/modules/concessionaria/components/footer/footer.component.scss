@@ -1,0 +1,54 @@
+:host {
+  .container_footer_links {
+    display: flex;
+    justify-content: space-around;
+    background: var(--teal);
+    padding: 1em;
+
+    & .container_footer_links_item_titulo {
+      & h1 {
+        font-family: "Krona One", sans-serif;
+      }
+    }
+
+    & .container_footer_links_item_nav {
+      & ul {
+        display: flex;
+        gap: 20px;
+
+        & li {
+          width: 10%;
+        }
+      }
+    }
+
+    & .container_footer_links_item_titulo h3 {
+      font-family: "MontSerrat", sans-serif;
+      text-transform: uppercase;
+      font-size: 16px;
+      margin: 0;
+    }
+
+    & .container_footer_links_item_link ul li {
+      padding: 0.2em;
+      font-family: "MontSerrat", sans-serif;
+
+      & a {
+        font-size: 14px;
+        color: var(--rich-black);
+      }
+    }
+  }
+
+  .container_copy {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--rich-black);
+
+    & p {
+      color: var(--white);
+      font-family: "MontSerrat", sans-serif;
+    }
+  }
+}
