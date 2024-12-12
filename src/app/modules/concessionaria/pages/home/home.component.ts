@@ -3,6 +3,7 @@ import { HeaderComponent } from '../../components/header/header.component';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { FormFiltragemMarcasComponent } from '../../components/form/form-filtragem-marcas/form-filtragem-marcas.component';
 import { CardsCarroComponent } from '../../components/card/cards-carro/cards-carro.component';
+import { FormLinkMarcaComponent } from '../../components/form/form-link-marca/form-link-marca.component';
 
 @Component({
   selector: 'app-home',
@@ -11,6 +12,7 @@ import { CardsCarroComponent } from '../../components/card/cards-carro/cards-car
     HeaderComponent,
     FooterComponent,
     FormFiltragemMarcasComponent,
+    FormLinkMarcaComponent,
     CardsCarroComponent,
   ],
   templateUrl: './home.component.html',

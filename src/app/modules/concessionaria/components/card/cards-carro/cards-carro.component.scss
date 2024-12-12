@@ -1,0 +1,83 @@
+:host {
+  .container {
+    margin: auto;
+    & h2 {
+      font-family: "Krona One", sans-serif;
+    }
+  }
+  .container_novos,
+  .container_semiNovos {
+    display: flex;
+    gap: 30px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+
+    & .card {
+      background: var(--white);
+      border-radius: 5px;
+      & img {
+      }
+
+      & .descricao_card {
+        padding: 16px;
+        & .descricao_card_links {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        & .descricao_card,
+        & .botao,
+        & .titulo_carro,
+        & .descricao_card_carro,
+        & .preco,
+        & .loja {
+          font-family: "MontSerrat", sans-serif;
+        }
+
+        & .titulo_carro {
+          text-transform: uppercase;
+        }
+
+        & .botao {
+          color: var(--white);
+          background-color: var(--rich-black);
+          padding: 10px 30px;
+          border-radius: 30px;
+        }
+
+        & .descricao_card_carro,
+        & .loja {
+          font-size: 18px;
+        }
+
+        & .descricao_card_lojas {
+          display: flex;
+          gap: 30px;
+        }
+
+        & .preco {
+          font-size: 30px;
+          font-weight: 700;
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: 128px) and (max-width: 900px) {
+    .container {
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container_novos,
+    .container_semiNovos {
+      justify-content: center;
+      width: 100%;
+    }
+  }
+}
