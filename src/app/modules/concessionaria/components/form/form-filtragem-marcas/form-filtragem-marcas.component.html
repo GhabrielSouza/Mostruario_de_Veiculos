@@ -1,64 +1,72 @@
-<div class="container">
-  <h2>Encontre seu veiculo</h2>
-  <form
-    class="container_form"
-    action=""
-    method="post"
-    #form="ngForm"
-    (ngSubmit)="submitForm(form)"
-  >
-    <div class="container_form_options">
-      <div class="container_form_options_selects">
-        <label for="selectMarca">
-          <select
-            name="selectMarca"
-            id="selectMarca"
-            #selectMarca="ngModel"
-            ngModel
-            required
-          >
-            <option value="">Marca</option>
-            @for (item of listMarcaCarro(); track item) {
-            <option [value]="item.marca">{{ item.marca }}</option>
-            }
-          </select>
-        </label>
-        <label for="selectModelo">
-          <select
-            name="selectModelo"
-            id="selectModelo"
-            #selectModelo="ngModel"
-            ngModel
-            [disabled]="!selectMarca.dirty"
-          >
-            <option value="">Modelo</option>
-          </select>
-        </label>
-        <label for="selectVersao">
-          <select
-            name="selectVersao"
-            id="selectVersao"
-            #selectVersao="ngModel"
-            ngModel
-            [disabled]="!selectModelo.dirty"
-          >
-            <option value="">Versão</option>
-          </select>
-        </label>
+<article>
+  <div class="container">
+    <h2>Encontre seu veiculo</h2>
+    <form
+      class="container_form"
+      action=""
+      method="post"
+      #form="ngForm"
+      (ngSubmit)="submitForm(form)"
+    >
+      <div class="container_form_options">
+        <div class="container_form_options_selects">
+          <label for="selectMarca">
+            <select
+              name="selectMarca"
+              id="selectMarca"
+              #selectMarca="ngModel"
+              ngModel
+              required
+            >
+              <option value="">Marca</option>
+              @for (item of listMarcaCarro(); track item) {
+              <option [value]="item.marca">{{ item.marca }}</option>
+              }
+            </select>
+          </label>
+          <label for="selectModelo">
+            <select
+              name="selectModelo"
+              id="selectModelo"
+              #selectModelo="ngModel"
+              ngModel
+              [disabled]="!selectMarca.dirty"
+            >
+              <option value="">Modelo</option>
+              @for (item of listMarcaCarro(); track item) {
+              <option [value]="item.marca">{{ item.marca }}</option>
+              }
+            </select>
+          </label>
+          <label for="selectVersao">
+            <select
+              name="selectVersao"
+              id="selectVersao"
+              #selectVersao="ngModel"
+              ngModel
+              [disabled]="!selectModelo.dirty"
+            >
+              <option value="">Versão</option>
+              @for (item of listMarcaCarro(); track item) {
+              <option [value]="item.marca">{{ item.marca }}</option>
+              }
+            </select>
+          </label>
+        </div>
       </div>
-    </div>
-    <div class="container_form_submit">
-      <div class="container_form_submit_labels">
-        <label for="inputNovo">
-          <input id="inputNovo" type="checkbox" checked />
-          Novo
-        </label>
-        <label for="inputSeminovo">
-          <input id="inputSeminovo" type="checkbox" checked />
-          Seminovo
-        </label>
+      <div class="container_form_submit">
+        <div class="container_form_submit_labels">
+          <label for="inputNovo">
+            <input id="inputNovo" type="checkbox" checked />
+            Novo
+          </label>
+          <label for="inputSeminovo">
+            <input id="inputSeminovo" type="checkbox" checked />
+            Seminovo
+          </label>
+        </div>
+        <button class="btn btn-primary">Ver veículos</button>
       </div>
-      <button class="btn btn-primary">Ver veículos</button>
-    </div>
-  </form>
-</div>
+    </form>
+  </div>
+</article>

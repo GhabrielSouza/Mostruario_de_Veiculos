@@ -1,10 +1,54 @@
-<div class="card">
-  <div class="imagem_card">Foto não encontrada!</div>
-  <div class="descricao_card">
-    <a class="botao" href="#">Ver parcelas</a>
-    <h2>HYUNDAI CRETA 1.6 16V tipo</h2>
-    <p>89.260 KM / cambio... 2020/2021</p>
-    <p class="preco">R$ 89.990</p>
-    <p class="loja">Disponível em 1 loja</p>
+<div class="container">
+  <h2>Novos</h2>
+  <div class="container_novos">
+    @for (item of carrosNovos(); track item) {
+    <div class="card">
+      <img src="" alt="" />
+      <div class="descricao_card">
+        <div class="descricao_card_links">
+          <div class="img_marca">
+            <img src="assets/icons/car-solid.svg" alt="" />
+          </div>
+          <a class="botao" href="#">Ver parcelas</a>
+        </div>
+        <h2 class="titulo_carro">{{ item.nome }}</h2>
+        <p class="descricao_card_carro">
+          {{ item.quilometragem }} KM / cambio... {{ item.ano | date : "yyy" }}
+        </p>
+        <p class="preco">R$ {{ item.valor }}</p>
+        <div class="descricao_card_lojas">
+          <img
+            src="assets/icons/location-dot-solid.svg"
+            alt="Icone de localização"
+          />
+          <p class="loja">Disponível em {{ item.qtdLojas }} loja</p>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+  <h2>Seminovos</h2>
+  <div class="container_semiNovos">
+    <div class="card">
+      <img src="" alt="" />
+      <div class="descricao_card">
+        <div class="descricao_card_links">
+          <div class="img_marca">
+            <img src="assets/icons/car-solid.svg" alt="" />
+          </div>
+          <a class="botao" href="#">Ver parcelas</a>
+        </div>
+        <h2 class="titulo_carro">HYUNDAI CRETA 1.6 16V tipo</h2>
+        <p class="descricao_card_carro">89.260 KM / cambio... 2020/2021</p>
+        <p class="preco">R$ 89.990</p>
+        <div class="descricao_card_lojas">
+          <img
+            src="assets/icons/location-dot-solid.svg"
+            alt="Icone de localização"
+          />
+          <p class="loja">Disponível em 1 loja</p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

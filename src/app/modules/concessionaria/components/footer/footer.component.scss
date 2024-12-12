@@ -52,3 +52,16 @@
     }
   }
 }
+
+@media (max-width: 750px) {
+  .container_footer_links {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    flex-direction: column;
+
+    & .container_footer_links_item ul li:nth-child(3) {
+      display: none;
+    }
+  }
+}

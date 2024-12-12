@@ -1,10 +1,11 @@
 :host {
-  .container {
+  .header {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    gap: 50px;
     background: var(--rich-black);
-    padding: 0.5em 2em;
+    box-sizing: border-box;
   }
 
   .header_logo .header_logo_link {
@@ -12,54 +13,141 @@
     color: var(--white);
   }
 
-  .header_navegacao,
-  .header_opcoes {
-    .header_navegacao_nav_ul,
-    .header_opcoes_ul {
+  .header_navegacao {
+    display: flex;
+    gap: 50px;
+
+    & .header_navegacao_nav,
+    & .header_opcoes {
       display: flex;
+      align-items: center;
+    }
+
+    & .header_navegacao_nav_ul,
+    & .header_opcoes_ul {
+      display: flex;
+      align-items: center;
       gap: 50px;
+    }
+
+    & .header_navegacao_nav_ul .header_navegacao_nav_ul_item a,
+    & .header_opcoes_ul .header_opcoes_ul_item a {
+      font-family: "MontSerrat", sans-serif;
+      color: var(--white);
+    }
+
+    & .header_navegacao_nav_ul .header_navegacao_nav_ul_item a {
+      position: relative;
+    }
+
+    & .header_navegacao_nav_ul .header_navegacao_nav_ul_item a::after {
+      content: " ";
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      background: var(--white);
+      bottom: 0;
+      left: 0;
+      transition: 0.5s ease-in-out;
+    }
+
+    & .header_navegacao_nav_ul .header_navegacao_nav_ul_item a:hover:after {
+      width: 100%;
+    }
+
+    & .header_opcoes_ul_item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
     }
   }
 
-  .header_navegacao_nav_ul_item,
-  .header_opcoes_ul_item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  .header_navegacao_menu-hamburguer {
+    display: none;
+
+    #checkbox-id {
+      position: absolute;
+      opacity: 0;
+    }
+
+    label {
+      cursor: pointer;
+      position: relative;
+      display: block;
+      height: 22px;
+      width: 30px;
+
+      span {
+        position: absolute;
+        display: block;
+        height: 5px;
+        width: 100%;
+        border-radius: 30px;
+        background: var(--white);
+        transition: 0.25s ease-in-out;
+      }
+
+      span:nth-child(1) {
+        top: 0;
+      }
+
+      span:nth-child(2) {
+        top: 8px;
+      }
+
+      span:nth-child(3) {
+        top: 16px;
+      }
+    }
   }
 
-  .header_navegacao_nav_ul_item a,
-  .header_opcoes_ul_item a {
-    font-family: "Montserrat", sans-serif;
-    color: var(--white);
-    position: relative;
+  & .header_navegacao_menu-hamburguer {
+    display: none;
   }
 
-  .header_navegacao_nav_ul_item a::after {
-    content: " ";
-    width: 0%;
-    height: 2px;
-    background: var(--cambridge-blue);
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    transition: 0.5s ease-in-out;
-  }
+  @media screen and (min-width: 128px) and (max-width: 900px) {
+    .header {
+      position: relative;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 5px;
+      width: 100%;
+    }
 
-  .header_navegacao_nav_ul_item a:hover {
-    color: var(--cambridge-blue);
-  }
+    .header_navegacao {
+      position: fixed;
+      top: 70px;
+      right: 0;
+      width: 50%;
+      height: calc(100vh - 100px);
+      background: var(--rich-black);
+      flex-direction: column;
+      align-items: center;
+      padding: 50px 10px;
+      transform: translateX(100%);
+      transition: transform 0.3s ease-in-out;
+      overflow-x: hidden;
+      z-index: 1;
 
-  .header_navegacao_nav_ul_item a:hover::after {
-    width: 100%;
-  }
+      &.menu_hamburguer {
+        transform: translateX(0);
+      }
 
-  .header_opcoes_ul_item_img {
-    background: var(--cambridge-blue);
-    padding: 0.3em 0.5em;
-    border-radius: 50%;
-  }
+      & .header_navegacao_nav_ul,
+      & .header_opcoes_ul {
+        flex-direction: column;
 
-  @media (max-width: 750px) {
+        & .header_navegacao_nav_ul_item {
+          padding: 10px 0;
+          width: 100%;
+          text-align: center;
+          border-bottom: 1px solid var(--white);
+        }
+      }
+    }
+
+    .header_navegacao_menu-hamburguer {
+      display: block;
+    }
   }
 }
