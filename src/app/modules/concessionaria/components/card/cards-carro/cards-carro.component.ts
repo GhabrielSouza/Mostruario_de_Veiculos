@@ -1,10 +1,16 @@
 import { DatePipe } from '@angular/common';
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { CarouselComponent } from '../../carousel/carousel.component';
+import { ICarouselImagem } from '../../../interface/ICarouselImagem.interface';
+import { FormCadastroCarroComponent } from '../../form/form-cadastro-carro/form-cadastro-carro.component';
+import { EDialogPanelClass } from '../../../enum/EDialogPanelClass.enum';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-cards-carro',
   standalone: true,
-  imports: [DatePipe],
+  imports: [DatePipe, RouterLink, CarouselComponent],
   templateUrl: './cards-carro.component.html',
   styleUrl: './cards-carro.component.scss',
 })
@@ -72,4 +78,28 @@ export class CardsCarroComponent {
       qtdLojas: 2,
     },
   ]);
+
+  public imagens = signal<Array<ICarouselImagem>>([
+    {
+      imagemSrc: 'assets/imgs/carros/carro1.webp',
+      imagemAlt: 'Carro 1',
+    },
+    {
+      imagemSrc: 'assets/imgs/carros/carro2.jpeg',
+      imagemAlt: 'Carro 2',
+    },
+    {
+      imagemSrc: 'assets/imgs/carros/carro3.webp',
+      imagemAlt: 'Carro 3',
+    },
+  ]);
+
+  #dialog = inject(MatDialog);
+
+  public openDialog() {
+    this.#dialog.open(FormCadastroCarroComponent, {
+      data: '',
+      panelClass: EDialogPanelClass.PROJECTS,
+    });
+  }
 }

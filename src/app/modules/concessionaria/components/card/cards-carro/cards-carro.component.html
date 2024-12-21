@@ -1,29 +1,37 @@
 <div class="container">
+  <div class="botao_add_carro">
+    <button class="btn btn-primary" (click)="openDialog()">
+      Adicionar novo carro
+    </button>
+  </div>
   <h2>Novos</h2>
   <div class="container_novos">
     @for (item of carrosNovos(); track item) {
     <div class="card">
-      <img src="" alt="" />
-      <div class="descricao_card">
-        <div class="descricao_card_links">
-          <div class="img_marca">
-            <img src="assets/icons/car-solid.svg" alt="" />
+      <app-carousel [imagens]="imagens()" />
+      <a [routerLink]="['/detalhes']" routerLinkActive="router-link-active">
+        <div class="descricao_card">
+          <div class="descricao_card_links">
+            <div class="img_marca">
+              <img src="assets/icons/car-solid.svg" alt="" />
+            </div>
+            <a class="botao" href="#">Ver parcelas</a>
           </div>
-          <a class="botao" href="#">Ver parcelas</a>
+          <h2 class="titulo_carro">{{ item.nome }}</h2>
+          <p class="descricao_card_carro">
+            {{ item.quilometragem }} KM / cambio...
+            {{ item.ano | date : "yyy" }}
+          </p>
+          <p class="preco">R$ {{ item.valor }}</p>
+          <div class="descricao_card_lojas">
+            <img
+              src="assets/icons/location-dot-solid.svg"
+              alt="Icone de localização"
+            />
+            <p class="loja">Disponível em {{ item.qtdLojas }} loja</p>
+          </div>
         </div>
-        <h2 class="titulo_carro">{{ item.nome }}</h2>
-        <p class="descricao_card_carro">
-          {{ item.quilometragem }} KM / cambio... {{ item.ano | date : "yyy" }}
-        </p>
-        <p class="preco">R$ {{ item.valor }}</p>
-        <div class="descricao_card_lojas">
-          <img
-            src="assets/icons/location-dot-solid.svg"
-            alt="Icone de localização"
-          />
-          <p class="loja">Disponível em {{ item.qtdLojas }} loja</p>
-        </div>
-      </div>
+      </a>
     </div>
     }
   </div>

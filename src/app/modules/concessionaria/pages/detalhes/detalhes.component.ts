@@ -1,27 +1,23 @@
 import { Component, signal } from '@angular/core';
 import { HeaderComponent } from '../../components/header/header.component';
 import { FooterComponent } from '../../components/footer/footer.component';
-import { FormFiltragemMarcasComponent } from '../../components/form/form-filtragem-marcas/form-filtragem-marcas.component';
-import { CardsCarroComponent } from '../../components/card/cards-carro/cards-carro.component';
-import { FormLinkMarcaComponent } from '../../components/form/form-link-marca/form-link-marca.component';
-import { CarouselComponent } from '../../components/carousel/carousel.component';
+import { CardCarroIndividualComponent } from '../../components/card/card-carro-individual/card-carro-individual.component';
 import { ICarouselImagem } from '../../interface/ICarouselImagem.interface';
+import { CarouselComponent } from '../../components/carousel/carousel.component';
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-detalhes',
   standalone: true,
   imports: [
     HeaderComponent,
     FooterComponent,
-    FormFiltragemMarcasComponent,
-    FormLinkMarcaComponent,
-    CardsCarroComponent,
+    CardCarroIndividualComponent,
     CarouselComponent,
   ],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.scss',
+  templateUrl: './detalhes.component.html',
+  styleUrl: './detalhes.component.scss',
 })
-export class HomeComponent {
+export class DetalhesComponent {
   public imagens = signal<Array<ICarouselImagem>>([
     {
       imagemSrc: 'assets/imgs/carros/carro1.webp',
