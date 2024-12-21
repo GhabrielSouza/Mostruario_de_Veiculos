@@ -1,4 +1,9 @@
 :host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
   .container {
     margin: auto;
     & h2 {
@@ -14,9 +19,12 @@
     box-sizing: border-box;
 
     & .card {
+      width: 30%;
       background: var(--white);
       border-radius: 5px;
-      & img {
+
+      & a {
+        color: var(--rich-black);
       }
 
       & .descricao_card {
@@ -72,6 +80,10 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+
+      & .card {
+        width: 80%;
+      }
     }
 
     .container_novos,

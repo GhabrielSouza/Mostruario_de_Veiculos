@@ -1,6 +1,9 @@
 <app-header />
 <main>
   <section>
+    <app-carousel [imagens]="imagens()" [autoSlide]="true" />
+  </section>
+  <section>
     <app-form-link-marca />
     <app-form-filtragem-marcas />
   </section>

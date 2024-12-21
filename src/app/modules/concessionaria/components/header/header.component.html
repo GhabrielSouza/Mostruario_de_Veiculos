@@ -1,7 +1,7 @@
 <header>
   <div class="header">
     <div class="header_logo">
-      <a class="header_logo_link" href="#"><h1>AutoHorizonte</h1></a>
+      <a class="header_logo_link" [routerLink]="['']"><h1>AutoHorizonte</h1></a>
     </div>
     <div class="header_navegacao_menu">
       <div class="header_navegacao_menu-hamburguer">
@@ -18,7 +18,11 @@
         <nav class="header_navegacao_nav">
           <ul class="header_navegacao_nav_ul">
             <li class="header_navegacao_nav_ul_item">
-              <a href="#">Listagem de Veículos</a>
+              <a
+                [routerLink]="['/listagem-veiculos']"
+                routerLinkActive="router-link-active"
+                >Listagem de Veículos</a
+              >
             </li>
             <li class="header_navegacao_nav_ul_item"><a href="#">Lojas</a></li>
             <li class="header_navegacao_nav_ul_item">
