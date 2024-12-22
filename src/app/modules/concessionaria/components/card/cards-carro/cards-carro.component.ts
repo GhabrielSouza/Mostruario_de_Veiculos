@@ -96,9 +96,8 @@ export class CardsCarroComponent {
 
   #dialog = inject(MatDialog);
 
-  public openDialog() {
+  public openDialog(): void {
     this.#dialog.open(FormCadastroCarroComponent, {
-      data: '',
       panelClass: EDialogPanelClass.PROJECTS,
     });
   }

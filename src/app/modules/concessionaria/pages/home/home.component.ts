@@ -24,15 +24,15 @@ import { ICarouselImagem } from '../../interface/ICarouselImagem.interface';
 export class HomeComponent {
   public imagens = signal<Array<ICarouselImagem>>([
     {
-      imagemSrc: 'assets/imgs/carros/carro1.webp',
+      imagemSrc: 'assets/imgs/carrosCarousel/imagem1.avif',
       imagemAlt: 'Carro 1',
     },
     {
-      imagemSrc: 'assets/imgs/carros/carro2.jpeg',
+      imagemSrc: 'assets/imgs/carrosCarousel/imagem2.avif',
       imagemAlt: 'Carro 2',
     },
     {
-      imagemSrc: 'assets/imgs/carros/carro3.webp',
+      imagemSrc: 'assets/imgs/carrosCarousel/imagem3.avif',
       imagemAlt: 'Carro 3',
     },
   ]);

@@ -6,6 +6,7 @@
   padding: 10px 30px;
   display: flex;
   flex-direction: column;
+
   header,
   h3,
   p,
@@ -64,9 +65,5 @@
     border-radius: 4px;
     cursor: pointer;
     align-self: flex-end;
-
-    &:hover {
-      background-color: #0056b3;
-    }
   }
 }
