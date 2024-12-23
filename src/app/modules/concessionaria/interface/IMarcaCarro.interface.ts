@@ -1,3 +1,3 @@
-interface ImarcaCarro {
+export interface ImarcaCarro {
   marca: string;
 }

@@ -1,12 +1,7 @@
 <div class="container">
-  <div class="botao_add_carro">
-    <button class="btn btn-primary" (click)="openDialog()">
-      Adicionar novo carro
-    </button>
-  </div>
   <h2>Novos</h2>
   <div class="container_novos">
-    @for (item of carrosNovos(); track item) {
+    @for (item of carrosNovos; track item) {
     <div class="card">
       <app-carousel [imagens]="imagens()" />
       <a [routerLink]="['/detalhes']" routerLinkActive="router-link-active">
@@ -32,6 +27,11 @@
           </div>
         </div>
       </a>
+    </div>
+    }@empty {
+    <div class="container_semCadastro">
+      <i class="fa-solid fa-triangle-exclamation" style="color: #ec1313"></i>
+      <p>Nenhum carro cadastrado.</p>
     </div>
     }
   </div>

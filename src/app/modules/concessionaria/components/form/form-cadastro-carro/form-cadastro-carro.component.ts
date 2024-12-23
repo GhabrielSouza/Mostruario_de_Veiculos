@@ -7,11 +7,10 @@ import {
 import { IDialogFormCarro } from '../../../interface/IDialogFormCarro.interface';
 
 @Component({
-  selector: 'app-form-cadastro-carro',
-  standalone: true,
-  imports: [MatDialogModule],
-  templateUrl: './form-cadastro-carro.component.html',
-  styleUrl: './form-cadastro-carro.component.scss',
+    selector: 'app-form-cadastro-carro',
+    imports: [MatDialogModule],
+    templateUrl: './form-cadastro-carro.component.html',
+    styleUrl: './form-cadastro-carro.component.scss'
 })
 export class FormCadastroCarroComponent implements OnInit {
   constructor(

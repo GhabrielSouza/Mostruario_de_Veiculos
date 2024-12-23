@@ -7,9 +7,19 @@
     <app-form-link-marca />
     <app-form-filtragem-marcas />
   </section>
+  @defer (on viewport) {
   <section>
     <app-cards-carro />
   </section>
+  }@placeholder {
+  <section>
+    <h2>Carregando todos os componentes</h2>
+  </section>
+  }@error {
+  <section>
+    <h2>Erro ao carregar o compornente</h2>
+  </section>
+  }
 </main>
 <footer>
   <app-footer />

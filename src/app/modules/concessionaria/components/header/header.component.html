@@ -1,5 +1,9 @@
 <header>
-  <div class="header">
+  <div
+    class="header"
+    (scroll)="onscroll()"
+    [ngClass]="navbarFixed ? 'fixed' : 'nofixed'"
+  >
     <div class="header_logo">
       <a class="header_logo_link" [routerLink]="['']"><h1>AutoHorizonte</h1></a>
     </div>
@@ -26,7 +30,7 @@
             </li>
             <li class="header_navegacao_nav_ul_item"><a href="#">Lojas</a></li>
             <li class="header_navegacao_nav_ul_item">
-              <a href="#">Seminovos</a>
+              <a href="#">Marcas</a>
             </li>
             <li class="header_navegacao_nav_ul_item">
               <a href="#">Contato</a>

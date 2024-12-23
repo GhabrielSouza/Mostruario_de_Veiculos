@@ -8,18 +8,17 @@ import { CarouselComponent } from '../../components/carousel/carousel.component'
 import { ICarouselImagem } from '../../interface/ICarouselImagem.interface';
 
 @Component({
-  selector: 'app-home',
-  standalone: true,
-  imports: [
-    HeaderComponent,
-    FooterComponent,
-    FormFiltragemMarcasComponent,
-    FormLinkMarcaComponent,
-    CardsCarroComponent,
-    CarouselComponent,
-  ],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.scss',
+    selector: 'app-home',
+    imports: [
+        HeaderComponent,
+        FooterComponent,
+        FormFiltragemMarcasComponent,
+        FormLinkMarcaComponent,
+        CardsCarroComponent,
+        CarouselComponent,
+    ],
+    templateUrl: './home.component.html',
+    styleUrl: './home.component.scss'
 })
 export class HomeComponent {
   public imagens = signal<Array<ICarouselImagem>>([
