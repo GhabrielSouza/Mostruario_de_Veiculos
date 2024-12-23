@@ -1,7 +1,22 @@
 <app-header />
 <main>
   <section>
+    <div class="botao_add_carro">
+      <button class="btn btn-primary" (click)="openDialog()">
+        Adicionar novo carro
+      </button>
+    </div>
+    @defer (on viewport) {
     <app-cards-carro />
+    }@placeholder {
+    <section>
+      <h2>Carregando todos os componentes</h2>
+    </section>
+    }@error {
+    <section>
+      <h2>Erro ao carregar o compornente</h2>
+    </section>
+    }
   </section>
 </main>
 <app-footer />

@@ -10,6 +10,26 @@
       font-family: "Krona One", sans-serif;
     }
   }
+
+  .container_semCadastro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    & p {
+      font-family: "MontSerrat", sans-serif;
+      font-size: 36px;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    & i {
+      font-size: 100px;
+    }
+  }
+
   .container_novos,
   .container_semiNovos {
     display: flex;

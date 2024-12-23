@@ -6,16 +6,15 @@ import { ICarouselImagem } from '../../interface/ICarouselImagem.interface';
 import { CarouselComponent } from '../../components/carousel/carousel.component';
 
 @Component({
-  selector: 'app-detalhes',
-  standalone: true,
-  imports: [
-    HeaderComponent,
-    FooterComponent,
-    CardCarroIndividualComponent,
-    CarouselComponent,
-  ],
-  templateUrl: './detalhes.component.html',
-  styleUrl: './detalhes.component.scss',
+    selector: 'app-detalhes',
+    imports: [
+        HeaderComponent,
+        FooterComponent,
+        CardCarroIndividualComponent,
+        CarouselComponent,
+    ],
+    templateUrl: './detalhes.component.html',
+    styleUrl: './detalhes.component.scss'
 })
 export class DetalhesComponent {
   public imagens = signal<Array<ICarouselImagem>>([

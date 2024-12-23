@@ -10,9 +10,16 @@ import { EDialogPanelClass } from '../../enum/EDialogPanelClass.enum';
 
 @Component({
   selector: 'app-lista-veiculos',
-  standalone: true,
   imports: [HeaderComponent, FooterComponent, CardsCarroComponent],
   templateUrl: './lista-veiculos.component.html',
   styleUrl: './lista-veiculos.component.scss',
 })
-export class ListaVeiculosComponent {}
+export class ListaVeiculosComponent {
+  #dialog = inject(MatDialog);
+
+  public openDialog(): void {
+    this.#dialog.open(FormCadastroCarroComponent, {
+      panelClass: EDialogPanelClass.PROJECTS,
+    });
+  }
+}

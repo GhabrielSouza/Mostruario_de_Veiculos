@@ -3,11 +3,10 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ICarouselImagem } from '../../interface/ICarouselImagem.interface';
 
 @Component({
-  selector: 'app-carousel',
-  standalone: true,
-  imports: [NgClass],
-  templateUrl: './carousel.component.html',
-  styleUrl: './carousel.component.scss',
+    selector: 'app-carousel',
+    imports: [NgClass],
+    templateUrl: './carousel.component.html',
+    styleUrl: './carousel.component.scss'
 })
 export class CarouselComponent implements OnInit {
   @Input() imagens: ICarouselImagem[] = [];
