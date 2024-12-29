@@ -1,0 +1,44 @@
+<header>
+  <h3>Cadastro de Loja</h3>
+  <button (click)="closeModal()">
+    <img src="assets/icons/dialog/close.svg" alt="Botão para fechar o dialog" />
+  </button>
+</header>
+<mat-dialog-content>
+  <form (ngSubmit)="cadastrarLoja()">
+    <!-- Imagem -->
+    <div class="form-group">
+      <label for="ftLoja">Escolha uma imagem</label>
+      <input type="file" id="ftLoja" name="ftLoja" required />
+    </div>
+
+    <!-- Endereço -->
+    <div class="form-group">
+      <label for="endereco">Endereço</label>
+      <input
+        type="text"
+        id="endereco"
+        name="endereco"
+        placeholder="Digite o endereço da loja"
+        maxlength="255"
+        required
+      />
+    </div>
+
+    <!-- Parceiros -->
+    <div class="form-group">
+      <label for="parceiros">Parceiros</label>
+      <input
+        type="text"
+        id="parceiros"
+        name="parceiros"
+        placeholder="Digite os parceiros da loja"
+        maxlength="255"
+        required
+      />
+    </div>
+
+    <!-- Botão de envio -->
+    <button class="btn btn-primary" type="submit">Cadastrar Loja</button>
+  </form>
+</mat-dialog-content>

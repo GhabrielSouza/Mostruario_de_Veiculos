@@ -28,12 +28,24 @@
                 >Listagem de Veículos</a
               >
             </li>
-            <li class="header_navegacao_nav_ul_item"><a href="#">Lojas</a></li>
             <li class="header_navegacao_nav_ul_item">
-              <a href="#">Marcas</a>
+              <a [routerLink]="['/lojas']" routerLinkActive="router-link-active"
+                >Lojas</a
+              >
             </li>
             <li class="header_navegacao_nav_ul_item">
-              <a href="#">Contato</a>
+              <a
+                [routerLink]="['/marcas']"
+                routerLinkActive="router-link-active"
+                >Marcas</a
+              >
+            </li>
+            <li class="header_navegacao_nav_ul_item">
+              <a
+                [routerLink]="['/contatos']"
+                routerLinkActive="router-link-active"
+                >Contato</a
+              >
             </li>
           </ul>
         </nav>

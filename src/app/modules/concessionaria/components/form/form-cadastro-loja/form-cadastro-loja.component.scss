@@ -67,13 +67,4 @@
     cursor: pointer;
     align-self: flex-end;
   }
-
-  .form-btn {
-    display: flex;
-    gap: 30px;
-
-    & button:disabled {
-      background: var(#ddd);
-    }
-  }
 }
