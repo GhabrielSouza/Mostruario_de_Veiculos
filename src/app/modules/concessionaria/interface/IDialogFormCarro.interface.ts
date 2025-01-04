@@ -17,4 +17,5 @@ export interface IDialogFormCarro {
   itens?: string[]; // Array de itens separados por vírgula
   loja?: string;
   marca?: string;
+  imagem: File[];
 }

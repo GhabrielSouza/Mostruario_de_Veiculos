@@ -12,7 +12,7 @@ export const routes: Routes = [
     component: HomeComponent,
   },
   {
-    path: 'detalhes',
+    path: 'detalhes/:id',
     component: DetalhesComponent,
   },
   {

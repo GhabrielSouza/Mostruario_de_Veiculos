@@ -17,4 +17,5 @@ export interface ICarroDescricao {
   itens?: string[]; // Itens do carro
   loja?: string; // ID da loja
   marca?: string; // ID da marca
+  imagem: File[];
 }

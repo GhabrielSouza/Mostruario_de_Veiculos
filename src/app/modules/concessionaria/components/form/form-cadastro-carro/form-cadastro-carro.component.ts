@@ -9,6 +9,8 @@ import { concatMap } from 'rxjs';
 import { GetCarrosService } from '../../../../../service/get-carros.service';
 import { ICarroDescricao } from '../../../interface/ICarroDescricao.interface';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { CrudLojasService } from '../../../../../service/crud-lojas.service';
+import { CrudMarcasService } from '../../../../../service/crud-marcas.service';
 
 @Component({
   selector: 'app-form-cadastro-carro',
@@ -23,6 +25,8 @@ export class FormCadastroCarroComponent implements OnInit {
   ) {}
 
   #apiService = inject(GetCarrosService);
+  #apiServiceLoja = inject(CrudLojasService);
+  #apiServiceMarca = inject(CrudMarcasService);
   #fb = inject(FormBuilder);
 
   public carroForm = this.#fb.group({
@@ -42,9 +46,14 @@ export class FormCadastroCarroComponent implements OnInit {
     itens: ['', Validators.required],
     loja: ['', Validators.required],
     marca: ['', Validators.required],
+    imagem: [, Validators.required],
   });
 
   public getData = signal<IDialogFormCarro | null>(null);
+
+  public getListLojas = this.#apiServiceLoja.ListLojas;
+
+  public getListMarcas = this.#apiServiceMarca.ListMarcas;
 
   public closeModal(): void {
     return this._dialogRef.close();
@@ -56,6 +65,9 @@ export class FormCadastroCarroComponent implements OnInit {
     if (this._data) {
       this.carroForm.patchValue(this._data);
     }
+
+    this.#apiServiceLoja.httpListLojas$().subscribe();
+    this.#apiServiceMarca.httpListMarcas$().subscribe();
   }
 
   public httpCreateCarro() {
@@ -75,7 +87,8 @@ export class FormCadastroCarroComponent implements OnInit {
         this.carroForm.value.combustivel,
         this.carroForm.value.itens,
         this.carroForm.value.loja,
-        this.carroForm.value.marca
+        this.carroForm.value.marca,
+        this.carroForm.value.imagem
       )
       .pipe(concatMap(() => this.#apiService.httpListCarros$()))
       .subscribe({
@@ -111,7 +124,8 @@ export class FormCadastroCarroComponent implements OnInit {
         this.carroForm.value.combustivel,
         this.carroForm.value.itens,
         this.carroForm.value.loja,
-        this.carroForm.value.marca
+        this.carroForm.value.marca,
+        this.carroForm.value.imagem
       )
       .pipe(concatMap(() => this.#apiService.httpListCarros$()))
       .subscribe({

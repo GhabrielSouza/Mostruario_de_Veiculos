@@ -24,6 +24,18 @@ export class GetCarrosService {
     );
   }
 
+  #setListCarrosId = signal<null | Array<ICarroDescricao>>(null);
+  get ListCarrosId() {
+    return this.#setListCarrosId.asReadonly();
+  }
+
+  public httpListCarrosId$(id: number): Observable<Array<ICarroDescricao>> {
+    return this.#http.get<Array<ICarroDescricao>>(`${this.#url()}/${id}`).pipe(
+      shareReplay(),
+      tap((res) => this.#setListCarrosId.set(res))
+    );
+  }
+
   public httpCreateCarro$(
     nome: string | null | undefined,
     modelo: string | null | undefined,
@@ -39,7 +51,8 @@ export class GetCarrosService {
     combustivel: string | null | undefined,
     itens: string | null | undefined,
     loja: string | null | undefined,
-    marca: string | null | undefined
+    marca: string | null | undefined,
+    imagem: File | null | undefined
   ): Observable<IDialogFormCarro> {
     return this.#http
       .post<IDialogFormCarro>(this.#url(), {
@@ -58,6 +71,7 @@ export class GetCarrosService {
         itens,
         loja,
         marca,
+        imagem,
       })
       .pipe(shareReplay());
   }
@@ -78,7 +92,8 @@ export class GetCarrosService {
     combustivel: string | null | undefined,
     itens: string | null | undefined,
     loja: string | null | undefined,
-    marca: string | null | undefined
+    marca: string | null | undefined,
+    imagem: File | null | undefined
   ): Observable<IDialogFormCarro> {
     return this.#http
       .put<IDialogFormCarro>(`${this.#url()}/${id}`, {
@@ -97,6 +112,7 @@ export class GetCarrosService {
         itens,
         loja,
         marca,
+        imagem,
       })
       .pipe(shareReplay());
   }

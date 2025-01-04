@@ -22,7 +22,41 @@
           Excluir
         </button>
       </div>
-      <a [routerLink]="['/detalhes']" routerLinkActive="router-link-active">
+      <a
+        [routerLink]="['detalhes', item.id]"
+        routerLinkActive="router-link-active"
+      >
+        <div class="descricao_card">
+          <div class="descricao_card_links">
+            <div class="img_marca">
+              <img src="assets/icons/car-solid.svg" alt="" />
+            </div>
+            <a class="botao" href="#">Ver parcelas</a>
+          </div>
+          <h2 class="titulo_carro">{{ item.nome }}</h2>
+          <p class="descricao_card_carro">
+            {{ item.quilometragem }} KM / {{ item.cambio }}
+            {{ item.ano | date : "yyy" }}
+          </p>
+          <p class="preco">R$ {{ item.preco }}</p>
+          <div class="descricao_card_lojas">
+            <img
+              src="assets/icons/location-dot-solid.svg"
+              alt="Icone de localização"
+            />
+            <p class="loja">Disponível em {{ item.loja }}</p>
+          </div>
+        </div>
+      </a>
+    </div>
+    }@else {
+
+    <div class="card">
+      <app-carousel [imagens]="imagens()" />
+      <a
+        [routerLink]="['/detalhes', item.id]"
+        routerLinkActive="router-link-active"
+      >
         <div class="descricao_card">
           <div class="descricao_card_links">
             <div class="img_marca">
@@ -42,34 +76,6 @@
               alt="Icone de localização"
             />
             <p class="loja">Disponível em {{ item.loja }}</p>
-          </div>
-        </div>
-      </a>
-    </div>
-    }@else {
-
-    <div class="card">
-      <app-carousel [imagens]="imagens()" />
-      <a [routerLink]="['/detalhes']" routerLinkActive="router-link-active">
-        <div class="descricao_card">
-          <div class="descricao_card_links">
-            <div class="img_marca">
-              <img src="assets/icons/car-solid.svg" alt="" />
-            </div>
-            <a class="botao" href="#">Ver parcelas</a>
-          </div>
-          <h2 class="titulo_carro">{{ item.nome }}</h2>
-          <p class="descricao_card_carro">
-            {{ item.quilometragem }} KM / cambio...
-            {{ item.ano | date : "yyy" }}
-          </p>
-          <p class="preco">R$ {{ item.preco }}</p>
-          <div class="descricao_card_lojas">
-            <img
-              src="assets/icons/location-dot-solid.svg"
-              alt="Icone de localização"
-            />
-            <p class="loja">Disponível em {{ item.loja }} loja</p>
           </div>
         </div>
       </a>
@@ -113,7 +119,7 @@
           </div>
           <h2 class="titulo_carro">{{ item.nome }}</h2>
           <p class="descricao_card_carro">
-            {{ item.quilometragem }} KM / cambio...
+            {{ item.quilometragem }} KM / {{ item.cambio }}
             {{ item.ano | date : "yyy" }}
           </p>
           <p class="preco">R$ {{ item.preco }}</p>
@@ -131,7 +137,10 @@
 
     <div class="card">
       <app-carousel [imagens]="imagens()" />
-      <a [routerLink]="['/detalhes']" routerLinkActive="router-link-active">
+      <a
+        [routerLink]="['/detalhes', item.id]"
+        routerLinkActive="router-link-active"
+      >
         <div class="descricao_card">
           <div class="descricao_card_links">
             <div class="img_marca">
@@ -150,7 +159,7 @@
               src="assets/icons/location-dot-solid.svg"
               alt="Icone de localização"
             />
-            <p class="loja">Disponível em {{ item.loja }} loja</p>
+            <p class="loja">Disponível em {{ item.loja }}</p>
           </div>
         </div>
       </a>

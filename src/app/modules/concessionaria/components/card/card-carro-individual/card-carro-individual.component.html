@@ -4,46 +4,61 @@
   <!-- descricao nessa div -->
   <div class="descricao">
     <!-- titulo e logo do carro -->
+    @for (item of getListCarrosId(); track item) {
     <div class="descricao_marca">
       <img src="" alt="Logo do carro" />
       <div class="descricao_marca_titulo">
-        <h2>Nome do carro</h2>
-        <p>Potencia</p>
+        <h2>{{ item.nome }} {{ item.ano }} {{ item.cor }}</h2>
+        <p>{{ item.cilindradas }}</p>
       </div>
     </div>
     <!-- descricao tipo: cor/ ano/ combustivel etc -->
     <div class="descricao_detalhes">
       <div class="descricao_detalhes_ano">
         <h4>Ano</h4>
-        <p><strong>Ano</strong></p>
+        <p>
+          <strong>{{ item.ano }}</strong>
+        </p>
       </div>
       <div class="descricao_detalhes_cor">
         <h4>Cor</h4>
-        <p><strong>cor</strong></p>
+        <p>
+          <strong>{{ item.cor }}</strong>
+        </p>
       </div>
       <div class="descricao_detalhes_combustivel">
         <h4>Combustivel</h4>
-        <p><strong>combustivel</strong></p>
+        <p>
+          <strong>{{ item.combustivel }}</strong>
+        </p>
       </div>
       <div class="descricao_detalhes_quilometragem">
         <h4>Quilometragem</h4>
-        <p><strong>Quilometragem</strong></p>
+        <p>
+          <strong>{{ item.quilometragem }}</strong>
+        </p>
       </div>
       <div class="descricao_detalhes_cambio">
         <h4>Câmbio</h4>
-        <p><strong>Câmbio</strong></p>
+        <p>
+          <strong>{{ item.cambio }}</strong>
+        </p>
+      </div>
+      <div class="descricao_detalhes_cambio">
+        <h4>Final da Placa</h4>
+        <p>
+          <strong>{{ item.finalDaPlaca }}</strong>
+        </p>
       </div>
     </div>
     <!-- DESCRICAO MESMO DO VEICULO -->
     <div class="descricao_sobre">
       <h4>Descrição</h4>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore, dolore
-        vitae! Quas quasi voluptas rerum ut debitis? Eveniet amet laudantium
-        error, ipsam ad numquam, quas quasi laboriosam debitis, sapiente
-        aliquid.
+        {{ item.descricao }}
       </p>
     </div>
+    }
   </div>
 
   <!-- formulario de contato -->

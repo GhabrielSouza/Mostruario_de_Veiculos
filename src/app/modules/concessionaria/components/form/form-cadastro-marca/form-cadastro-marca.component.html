@@ -5,11 +5,17 @@
   </button>
 </header>
 <mat-dialog-content>
-  <form (ngSubmit)="cadastrarMarca()">
+  <form [formGroup]="marcaForm" (ngSubmit)="httpCreateMarca()">
     <!-- Imagem -->
     <div class="form-group">
       <label for="ftMarca">Escolha uma imagem</label>
-      <input type="file" id="ftMarca" name="ftMarca" required />
+      <input
+        type="file"
+        id="ftMarca"
+        name="ftMarca"
+        required
+        formControlName="imagem"
+      />
     </div>
 
     <!-- Nome da Marca -->
@@ -22,10 +28,13 @@
         placeholder="Digite o nome da marca"
         maxlength="255"
         required
+        formControlName="nome"
       />
     </div>
 
     <!-- Botão de envio -->
-    <button class="btn btn-primary" type="submit">Cadastrar Marca</button>
+    <button class="btn btn-primary" [disabled]="!marcaForm.valid">
+      Cadastrar Marca
+    </button>
   </form>
 </mat-dialog-content>

@@ -6,12 +6,14 @@
     margin: 1em auto;
     overflow: hidden;
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 
     gap: 10px;
 
     .img_card {
       position: relative;
-
+      left: 155px;
       .btn_Card {
         position: absolute;
         top: 10px;
@@ -43,7 +45,7 @@
     }
 
     .card_pi {
-      padding: 15px;
+      padding: 30px;
 
       .nome_loja {
         font-family: var(--font-primary);
