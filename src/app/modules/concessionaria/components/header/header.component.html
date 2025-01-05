@@ -5,7 +5,7 @@
     [ngClass]="navbarFixed ? 'fixed' : 'nofixed'"
   >
     <div class="header_logo">
-      <a class="header_logo_link" [routerLink]="['']"><h1>AutoHorizonte</h1></a>
+      <a class="header_logo_link" [routerLink]="['']"><h1>Grupo Sinal</h1></a>
     </div>
     <div class="header_navegacao_menu">
       <div class="header_navegacao_menu-hamburguer">
@@ -28,12 +28,24 @@
                 >Listagem de Veículos</a
               >
             </li>
-            <li class="header_navegacao_nav_ul_item"><a href="#">Lojas</a></li>
             <li class="header_navegacao_nav_ul_item">
-              <a href="#">Marcas</a>
+              <a [routerLink]="['/lojas']" routerLinkActive="router-link-active"
+                >Lojas</a
+              >
             </li>
             <li class="header_navegacao_nav_ul_item">
-              <a href="#">Contato</a>
+              <a
+                [routerLink]="['/marcas']"
+                routerLinkActive="router-link-active"
+                >Marcas</a
+              >
+            </li>
+            <li class="header_navegacao_nav_ul_item">
+              <a
+                [routerLink]="['/contatos']"
+                routerLinkActive="router-link-active"
+                >Contato</a
+              >
             </li>
           </ul>
         </nav>

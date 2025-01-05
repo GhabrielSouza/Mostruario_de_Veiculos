@@ -1,0 +1,27 @@
+<app-header />
+<main>
+  <section>
+    <div class="botao_add_loja">
+      <button class="btn btn-primary" (click)="openDialog()">
+        Adicionar nova loja
+      </button>
+    </div>
+    <app-card-loja />
+  </section>
+  @defer (on viewport) {
+  <section>
+    <app-cards-carro />
+  </section>
+  }@placeholder {
+  <section>
+    <h2>Carregando todos os componentes</h2>
+  </section>
+  }@error {
+  <section>
+    <h2>Erro ao carregar o componente</h2>
+  </section>
+  }
+</main>
+<footer>
+  <app-footer />
+</footer>

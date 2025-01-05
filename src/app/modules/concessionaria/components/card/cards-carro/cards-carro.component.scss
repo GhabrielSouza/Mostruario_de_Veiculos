@@ -43,6 +43,12 @@
       background: var(--white);
       border-radius: 5px;
 
+      & .imagem_carro {
+        display: block;
+        width: 100%;
+        height: 400px;
+      }
+
       & a {
         color: var(--rich-black);
       }
@@ -88,6 +94,32 @@
         & .preco {
           font-size: 30px;
           font-weight: 700;
+        }
+      }
+      .btn_Card {
+        margin: 20px 0 0 20px;
+        display: flex;
+        gap: 10px;
+
+        button {
+          font-family: var(--font-secondary);
+          background-color: var(--white);
+          border: 1px solid var(--white);
+          padding: 5px 10px;
+          font-size: 12px;
+          cursor: pointer;
+          transition: background-color 0.3s;
+          border-radius: 5em;
+
+          &.btn-edit:hover {
+            background-color: #4caf50;
+            color: var(--white);
+          }
+
+          &.btn-delete:hover {
+            background-color: #f44336;
+            color: var(--white);
+          }
         }
       }
     }

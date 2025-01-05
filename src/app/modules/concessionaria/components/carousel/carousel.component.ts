@@ -1,14 +1,19 @@
 import { NgClass } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { ICarouselImagem } from '../../interface/ICarouselImagem.interface';
+import { GetCarrosService } from '../../../../service/get-carros.service';
 
 @Component({
-    selector: 'app-carousel',
-    imports: [NgClass],
-    templateUrl: './carousel.component.html',
-    styleUrl: './carousel.component.scss'
+  selector: 'app-carousel',
+  imports: [NgClass],
+  templateUrl: './carousel.component.html',
+  styleUrl: './carousel.component.scss',
 })
 export class CarouselComponent implements OnInit {
+  #apiService = inject(GetCarrosService);
+
+  public getListCarros = this.#apiService.ListCarros;
+
   @Input() imagens: ICarouselImagem[] = [];
   @Input() indicadores = true;
   @Input() controles = true;

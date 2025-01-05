@@ -1,0 +1,28 @@
+<header>
+  <h3>Cadastro de Marca</h3>
+  <button (click)="closeModal()">
+    <img src="assets/icons/dialog/close.svg" alt="Botão para fechar o dialog" />
+  </button>
+</header>
+<mat-dialog-content>
+  <form [formGroup]="marcaForm" (ngSubmit)="httpCreateMarca()">
+    <!-- Nome da Marca -->
+    <div class="form-group">
+      <label for="nome_marca">Nome da Marca</label>
+      <input
+        type="text"
+        id="nome_marca"
+        name="nome_marca"
+        placeholder="Digite o nome da marca"
+        maxlength="255"
+        required
+        formControlName="nome"
+      />
+    </div>
+
+    <!-- Botão de envio -->
+    <button class="btn btn-primary" [disabled]="!marcaForm.valid">
+      Cadastrar Marca
+    </button>
+  </form>
+</mat-dialog-content>

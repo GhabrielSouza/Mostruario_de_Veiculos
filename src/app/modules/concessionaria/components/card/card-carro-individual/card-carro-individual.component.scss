@@ -9,7 +9,7 @@
   .descricao {
     display: flex;
     flex-direction: column;
-    align-items: center;
+
     background: var(--white);
     padding: 30px;
     border-radius: 10px;
@@ -25,12 +25,13 @@
         gap: 50px;
 
         font-family: "MontSerrat", sans-serif;
+        text-transform: uppercase;
       }
     }
 
     & .descricao_detalhes {
       display: flex;
-      gap: 50px;
+      gap: 30px;
       padding-top: 50px;
       box-sizing: border-box;
 
@@ -59,65 +60,6 @@
 
       & p {
         font-family: "MontSerrat", sans-serif;
-      }
-    }
-  }
-
-  .formulario_contato {
-    background: var(--white);
-    margin-top: 30px;
-    padding: 30px;
-    border-radius: 10px;
-    & h2 {
-      font-family: "Krona One", sans-serif;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-
-      .formulario_contato_inputs {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-        width: 100%;
-
-        &_items {
-          display: flex;
-          flex-direction: column;
-
-          input {
-            font-family: "MontSerrat", sans-serif;
-            padding: 10px;
-            margin: 5px 0;
-            width: 100%;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-          }
-        }
-      }
-
-      .formulario_contato_textarea {
-        grid-column: span 2;
-        width: 100%;
-
-        textarea {
-          font-family: "MontSerrat", sans-serif;
-          width: 100%;
-          height: 100px;
-          padding: 10px;
-          border: 1px solid #ccc;
-          border-radius: 5px;
-          resize: none;
-          box-sizing: border-box;
-        }
-      }
-
-      button {
-        margin-top: 20px;
       }
     }
   }

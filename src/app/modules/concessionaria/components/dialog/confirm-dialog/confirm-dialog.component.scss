@@ -1,0 +1,27 @@
+:host {
+  p {
+    font-family: "Krona One", sans-serif;
+    font-size: 20px;
+  }
+
+  button {
+    font-family: var(--font-secondary);
+    background-color: var(--white);
+    border: 1px solid var(--white);
+    padding: 5px 10px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-radius: 5em;
+
+    &.confirm:hover {
+      background-color: #4caf50;
+      color: var(--white);
+    }
+
+    &.close:hover {
+      background-color: #f44336;
+      color: var(--white);
+    }
+  }
+}

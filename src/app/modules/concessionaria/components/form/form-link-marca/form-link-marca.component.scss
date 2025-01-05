@@ -23,6 +23,14 @@
       padding: 50px;
       justify-content: center;
       gap: 50px;
+      overflow-x: scroll;
+
+      & p {
+        font-family: var(--font-primary);
+        font-size: 20px;
+        text-transform: uppercase;
+        color: var(--white);
+      }
     }
   }
 }

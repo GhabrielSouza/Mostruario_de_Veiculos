@@ -4,82 +4,466 @@
     <img src="assets/icons/dialog/close.svg" alt="Botão para fechar o dialog" />
   </button>
 </header>
+@if(getData()?.id){
 <mat-dialog-content>
-  <form (ngSubmit)="cadastrarCarro()">
-    <!-- <div class="form-group">
-      <label for="marca">Marca</label>
-      <input
-        type="text"
-        id="marca"
-        formControlName="marca"
-        placeholder="Ex: Toyota"
-      />
-    </div> -->
-
+  <form [formGroup]="carroForm" (ngSubmit)="httpUpdateCarro()">
     <div class="form-group">
-      <label for="ftCarro">Adicionar foto</label>
-      <input type="file" id="ftCarro" />  
+      <label for="file">Escolha uma imagem</label>
+      <input
+        type="file"
+        id="file"
+        name="file[]"
+        placeholder="Selecione uma imagem"
+        multiple
+        formControlName="file"
+      />
     </div>
 
+    <!-- Nome -->
+    <div class="form-group">
+      <label for="nome">Nome</label>
+      <input
+        type="text"
+        id="nome"
+        name="nome"
+        placeholder="Digite o nome do carro"
+        required
+        formControlName="nome"
+      />
+    </div>
+
+    <!-- Modelo -->
     <div class="form-group">
       <label for="modelo">Modelo</label>
       <input
         type="text"
         id="modelo"
+        name="modelo"
+        placeholder="Digite o modelo"
+        required
         formControlName="modelo"
-        placeholder="Ex: Corolla"
+        value=""
       />
     </div>
 
+    <!-- Ano -->
     <div class="form-group">
       <label for="ano">Ano</label>
       <input
         type="number"
         id="ano"
+        name="ano"
+        placeholder="Digite o ano"
+        min="1900"
+        max="2099"
+        required
         formControlName="ano"
-        placeholder="Ex: 2022"
+        value=""
       />
     </div>
 
-    <div class="form-group">
-      <label for="preco">Preço</label>
-      <input
-        type="number"
-        id="preco"
-        formControlName="preco"
-        placeholder="Ex: 50000"
-      />
-    </div>
-
+    <!-- Cor -->
     <div class="form-group">
       <label for="cor">Cor</label>
       <input
         type="text"
         id="cor"
+        name="cor"
+        placeholder="Digite a cor"
+        required
         formControlName="cor"
-        placeholder="Ex: Preto"
+        value=""
       />
     </div>
 
+    <!-- Preço -->
     <div class="form-group">
-      <label for="placa">Placa</label>
+      <label for="preco">Preço</label>
+      <input
+        type="number"
+        id="preco"
+        name="preco"
+        placeholder="Digite o preço"
+        step="0.01"
+        required
+        formControlName="preco"
+        value=""
+      />
+    </div>
+
+    <!-- Quilometragem -->
+    <div class="form-group">
+      <label for="quilometragem">Quilometragem</label>
+      <input
+        type="number"
+        id="quilometragem"
+        name="quilometragem"
+        placeholder="Digite a quilometragem"
+        step="0.01"
+        required
+        formControlName="quilometragem"
+        value=""
+      />
+    </div>
+
+    <!-- Cilindradas -->
+    <div class="form-group">
+      <label for="cilindradas">Cilindradas</label>
+      <input
+        type="number"
+        id="cilindradas"
+        name="cilindradas"
+        placeholder="Digite as cilindradas"
+        step="0.1"
+        required
+        formControlName="cilindradas"
+        value=""
+      />
+    </div>
+
+    <!-- Estado do Carro -->
+    <div class="form-group">
+      <label for="estado_do_carro">Estado do Carro</label>
+      <select
+        id="estado_do_carro"
+        name="estado_do_carro"
+        required
+        formControlName="estadoDoCarro"
+      >
+        <option value="">Selecione uma estado</option>
+        <option value="Novo">Novo</option>
+        <option value="Semi novo">Semi novo</option>
+        <!-- Adicione mais opções conforme necessário -->
+      </select>
+    </div>
+
+    <!-- Câmbio -->
+    <div class="form-group">
+      <label for="cambio">Câmbio</label>
       <input
         type="text"
-        id="placa"
-        formControlName="placa"
-        placeholder="Ex: ABC-1234"
+        id="cambio"
+        name="cambio"
+        placeholder="Digite o tipo de câmbio"
+        required
+        formControlName="cambio"
+        value=""
       />
     </div>
 
+    <!-- Final da Placa -->
+    <div class="form-group">
+      <label for="final_da_placa">Final da Placa</label>
+      <input
+        type="number"
+        id="final_da_placa"
+        name="final_da_placa"
+        placeholder="Digite o final da placa"
+        min="0"
+        max="9"
+        required
+        formControlName="finalDaPlaca"
+        value=""
+      />
+    </div>
+
+    <!-- Descrição -->
     <div class="form-group">
       <label for="descricao">Descrição</label>
       <textarea
         id="descricao"
+        name="descricao"
+        placeholder="Adicione uma descrição"
+        required
         formControlName="descricao"
-        placeholder="Ex: Carro seminovo em ótimo estado"
+        value=""
       ></textarea>
     </div>
 
-    <button type="submit" class="btn btn-primary">Cadastrar</button>
+    <!-- Combustível -->
+    <div class="form-group">
+      <label for="combustivel">Combustível</label>
+      <input
+        type="text"
+        id="combustivel"
+        name="combustivel"
+        placeholder="Digite o tipo de combustível"
+        required
+        formControlName="combustivel"
+        value=""
+      />
+    </div>
+
+    <!-- Itens -->
+    <div class="form-group">
+      <label for="itens">Itens</label>
+      <textarea
+        id="itens"
+        name="itens"
+        placeholder="Adicione os itens separados por vírgula"
+        required
+        formControlName="itens"
+        value=""
+      ></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="loja">Loja</label>
+      <select id="loja" name="loja" required formControlName="loja">
+        <option value="">Selecione uma loja</option>
+        @for (item of getListLojas(); track $index) {
+        <option [ngValue]="item.id">{{ item.nome }}</option>
+        }
+        <!-- Adicione mais opções conforme necessário -->
+      </select>
+    </div>
+
+    <!-- Marca -->
+    <div class="form-group">
+      <label for="marca">Marca</label>
+      <select id="marca" name="marca" required formControlName="marca">
+        <option value="">Selecione uma marca</option>
+        @for (item of getListMarcas(); track $index) {
+        <option [ngValue]="item.id">{{ item.nome }}</option>
+        }
+        <!-- Adicione mais opções conforme necessário -->
+      </select>
+    </div>
+
+    <!-- Botão de envio -->
+    <div class="form-btn">
+      <button class="btn btn-primary" [disabled]="!carroForm.valid">
+        Alterar Carro
+      </button>
+      <button class="btn btn-primary" type="button" (click)="closeModal()">
+        Cancelar
+      </button>
+    </div>
   </form>
 </mat-dialog-content>
+}@else {
+<mat-dialog-content>
+  <form [formGroup]="carroForm" (ngSubmit)="httpCreateCarro()">
+    <div class="form-group">
+      <label for="file">Escolha uma imagem</label>
+      <input
+        type="file"
+        id="file"
+        name="file[]"
+        placeholder="Selecione uma imagem"
+        multiple
+        formControlName="file"
+        (change)="onFileSelected($event)"
+      />
+    </div>
+
+    <!-- Nome -->
+    <div class="form-group">
+      <label for="nome">Nome</label>
+      <input
+        type="text"
+        id="nome"
+        name="nome"
+        placeholder="Digite o nome do carro"
+        required
+        formControlName="nome"
+      />
+    </div>
+
+    <!-- Modelo -->
+    <div class="form-group">
+      <label for="modelo">Modelo</label>
+      <input
+        type="text"
+        id="modelo"
+        name="modelo"
+        placeholder="Digite o modelo"
+        required
+        formControlName="modelo"
+      />
+    </div>
+
+    <!-- Ano -->
+    <div class="form-group">
+      <label for="ano">Ano</label>
+      <input
+        type="number"
+        id="ano"
+        name="ano"
+        placeholder="Digite o ano"
+        min="1900"
+        max="2099"
+        required
+        formControlName="ano"
+      />
+    </div>
+
+    <!-- Cor -->
+    <div class="form-group">
+      <label for="cor">Cor</label>
+      <input
+        type="text"
+        id="cor"
+        name="cor"
+        placeholder="Digite a cor"
+        required
+        formControlName="cor"
+      />
+    </div>
+
+    <!-- Preço -->
+    <div class="form-group">
+      <label for="preco">Preço</label>
+      <input
+        type="number"
+        id="preco"
+        name="preco"
+        placeholder="Digite o preço"
+        step="0.01"
+        required
+        formControlName="preco"
+      />
+    </div>
+
+    <!-- Quilometragem -->
+    <div class="form-group">
+      <label for="quilometragem">Quilometragem</label>
+      <input
+        type="number"
+        id="quilometragem"
+        name="quilometragem"
+        placeholder="Digite a quilometragem"
+        step="0.01"
+        required
+        formControlName="quilometragem"
+      />
+    </div>
+
+    <!-- Cilindradas -->
+    <div class="form-group">
+      <label for="cilindradas">Cilindradas</label>
+      <input
+        type="number"
+        id="cilindradas"
+        name="cilindradas"
+        placeholder="Digite as cilindradas"
+        step="0.1"
+        required
+        formControlName="cilindradas"
+      />
+    </div>
+
+    <!-- Estado do Carro -->
+    <div class="form-group">
+      <label for="estado_do_carro">Estado do Carro</label>
+      <select
+        id="estado_do_carro"
+        name="estado_do_carro"
+        required
+        formControlName="estadoDoCarro"
+      >
+        <option value="">Selecione uma estado</option>
+        <option value="Novo">Novo</option>
+        <option value="Semi novo">Semi novo</option>
+        <!-- Adicione mais opções conforme necessário -->
+      </select>
+    </div>
+
+    <!-- Câmbio -->
+    <div class="form-group">
+      <label for="cambio">Câmbio</label>
+      <input
+        type="text"
+        id="cambio"
+        name="cambio"
+        placeholder="Digite o tipo de câmbio"
+        required
+        formControlName="cambio"
+      />
+    </div>
+
+    <!-- Final da Placa -->
+    <div class="form-group">
+      <label for="finalDaPlaca">Final da Placa</label>
+      <input
+        type="number"
+        id="finalDaPlaca"
+        name="finalDaPlaca"
+        placeholder="Digite o final da placa"
+        required
+        formControlName="finalDaPlaca"
+      />
+    </div>
+
+    <!-- Descrição -->
+    <div class="form-group">
+      <label for="descricao">Descrição</label>
+      <textarea
+        id="descricao"
+        name="descricao"
+        placeholder="Adicione uma descrição"
+        required
+        formControlName="descricao"
+      ></textarea>
+    </div>
+
+    <!-- Combustível -->
+    <div class="form-group">
+      <label for="combustivel">Combustível</label>
+      <input
+        type="text"
+        id="combustivel"
+        name="combustivel"
+        placeholder="Digite o tipo de combustível"
+        required
+        formControlName="combustivel"
+      />
+    </div>
+
+    <!-- Itens -->
+    <div class="form-group">
+      <label for="itens">Itens</label>
+      <textarea
+        id="itens"
+        name="itens"
+        placeholder="Adicione os itens separados por vírgula"
+        required
+        formControlName="itens"
+      ></textarea>
+    </div>
+
+    <!-- Loja -->
+    <div class="form-group">
+      <label for="loja">Loja</label>
+      <select id="loja" name="loja" required formControlName="loja">
+        <option value="">Selecione uma loja</option>
+        @for (item of getListLojas(); track $index) {
+        <option [ngValue]="item.id">{{ item.nome }}</option>
+        }
+        <!-- Adicione mais opções conforme necessário -->
+      </select>
+    </div>
+
+    <!-- Marca -->
+    <div class="form-group">
+      <label for="marca">Marca</label>
+      <select id="marca" name="marca" required formControlName="marca">
+        <option value="">Selecione uma marca</option>
+        @for (item of getListMarcas(); track $index) {
+        <option [ngValue]="item.id">{{ item.nome }}</option>
+        }
+      </select>
+    </div>
+
+    <!-- Botão de envio -->
+    <div class="form-btn">
+      <button class="btn btn-primary" [disabled]="!carroForm.valid">
+        Cadastrar Carro
+      </button>
+      <button class="btn btn-primary" type="button" (click)="closeModal()">
+        Cancelar
+      </button>
+    </div>
+  </form>
+</mat-dialog-content>
+}

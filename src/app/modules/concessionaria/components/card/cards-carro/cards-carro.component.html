@@ -1,10 +1,70 @@
 <div class="container">
   <h2>Novos</h2>
   <div class="container_novos">
-    @for (item of carrosNovos; track item) {
+    @for (item of getListCarros(); track item) { @if(item.estadoDoCarro ==
+    "Novo"){ @if (isListagemDeVeiculos()) {
+
     <div class="card">
+      @if(item.file){
+      <img class="imagem_carro" [src]="item.file" [alt]="item.nome" />
+      }@else {
       <app-carousel [imagens]="imagens()" />
-      <a [routerLink]="['/detalhes']" routerLinkActive="router-link-active">
+      }
+      <div class="btn_Card">
+        <button
+          class="btn-edit"
+          aria-label="Editar carro"
+          (click)="openDialog(item)"
+        >
+          Editar
+        </button>
+        <button
+          class="btn-delete"
+          (click)="httpDeleteCarro(item.id)"
+          aria-label="Excluir carro"
+        >
+          Excluir
+        </button>
+      </div>
+      <a
+        [routerLink]="['detalhes', item.id]"
+        routerLinkActive="router-link-active"
+      >
+        <div class="descricao_card">
+          <div class="descricao_card_links">
+            <div class="img_marca">
+              <img src="assets/icons/car-solid.svg" alt="" />
+            </div>
+            <a class="botao" href="#">Ver parcelas</a>
+          </div>
+
+          <p class="descricao_card_carro">
+            {{ item.quilometragem | number : "1.1-2" }} KM / {{ item.cambio }}
+            {{ item.ano | date : "yyy" }}
+          </p>
+          <p class="preco">R$ {{ item.preco | number : "1.1-2" }}</p>
+          <div class="descricao_card_lojas">
+            <img
+              src="assets/icons/location-dot-solid.svg"
+              alt="Icone de localização"
+            />
+            <p class="loja">Disponível em {{ item.loja }}</p>
+          </div>
+        </div>
+      </a>
+    </div>
+    }@else {
+
+    <div class="card">
+      @if(item.file){
+      <img class="imagem_carro" [src]="item.file" [alt]="item.nome" />
+      }@else {
+      <app-carousel [imagens]="imagens()" />
+      }
+      <a
+        [routerLink]="['/detalhes', item.id]"
+        routerLinkActive="router-link-active"
+      >
         <div class="descricao_card">
           <div class="descricao_card_links">
             <div class="img_marca">
@@ -14,21 +74,21 @@
           </div>
           <h2 class="titulo_carro">{{ item.nome }}</h2>
           <p class="descricao_card_carro">
-            {{ item.quilometragem }} KM / cambio...
+            {{ item.quilometragem | number : "1.1-2" }} KM / {{ item.cambio }}
             {{ item.ano | date : "yyy" }}
           </p>
-          <p class="preco">R$ {{ item.valor }}</p>
+          <p class="preco">R$ {{ item.preco | number : "1.1-2" }}</p>
           <div class="descricao_card_lojas">
             <img
               src="assets/icons/location-dot-solid.svg"
               alt="Icone de localização"
             />
-            <p class="loja">Disponível em {{ item.qtdLojas }} loja</p>
+            <p class="loja">Disponível em {{ item.loja }}</p>
           </div>
         </div>
       </a>
     </div>
-    }@empty {
+    }} }@empty {
     <div class="container_semCadastro">
       <i class="fa-solid fa-triangle-exclamation" style="color: #ec1313"></i>
       <p>Nenhum carro cadastrado.</p>
@@ -37,26 +97,95 @@
   </div>
   <h2>Seminovos</h2>
   <div class="container_semiNovos">
+    @for (item of getListCarros(); track item) { @if(item.estadoDoCarro ===
+    "Semi novo"){ @if (isListagemDeVeiculos()) {
     <div class="card">
-      <img src="" alt="" />
-      <div class="descricao_card">
-        <div class="descricao_card_links">
-          <div class="img_marca">
-            <img src="assets/icons/car-solid.svg" alt="" />
-          </div>
-          <a class="botao" href="#">Ver parcelas</a>
-        </div>
-        <h2 class="titulo_carro">HYUNDAI CRETA 1.6 16V tipo</h2>
-        <p class="descricao_card_carro">89.260 KM / cambio... 2020/2021</p>
-        <p class="preco">R$ 89.990</p>
-        <div class="descricao_card_lojas">
-          <img
-            src="assets/icons/location-dot-solid.svg"
-            alt="Icone de localização"
-          />
-          <p class="loja">Disponível em 1 loja</p>
-        </div>
+      @if(item.file){
+      <img class="imagem_carro" [src]="item.file" [alt]="item.nome" />
+      }@else {
+      <app-carousel [imagens]="imagens()" />
+      }
+      <div class="btn_Card">
+        <button
+          class="btn-edit"
+          aria-label="Editar carro"
+          (click)="openDialog(item)"
+        >
+          Editar
+        </button>
+        <button
+          class="btn-delete"
+          (click)="httpDeleteCarro(item.id)"
+          aria-label="Excluir carro"
+        >
+          Excluir
+        </button>
       </div>
+      <a [routerLink]="['/detalhes']" routerLinkActive="router-link-active">
+        <div class="descricao_card">
+          <div class="descricao_card_links">
+            <div class="img_marca">
+              <img src="assets/icons/car-solid.svg" alt="" />
+            </div>
+            <a class="botao" href="#">Ver parcelas</a>
+          </div>
+
+          <h2 class="titulo_carro">{{ item.nome }}</h2>
+          <p class="descricao_card_carro">
+            {{ item.quilometragem | number : "1.1-2" }} KM / {{ item.cambio }}
+            {{ item.ano | date : "yyy" }}
+          </p>
+          <p class="preco">R$ {{ item.preco | number : "1.1-2" }}</p>
+          <div class="descricao_card_lojas">
+            <img
+              src="assets/icons/location-dot-solid.svg"
+              alt="Icone de localização"
+            />
+            <p class="loja">Disponível em {{ item.loja }}</p>
+          </div>
+        </div>
+      </a>
     </div>
+    }@else {
+
+    <div class="card">
+      @if(item.file){
+      <img class="imagem_carro" [src]="item.file" [alt]="item.nome" />
+      }@else {
+      <app-carousel [imagens]="imagens()" />
+      }
+      <a
+        [routerLink]="['/detalhes', item.id]"
+        routerLinkActive="router-link-active"
+      >
+        <div class="descricao_card">
+          <div class="descricao_card_links">
+            <div class="img_marca">
+              <img src="assets/icons/car-solid.svg" alt="" />
+            </div>
+            <a class="botao" href="#">Ver parcelas</a>
+          </div>
+          <h2 class="titulo_carro">{{ item.nome }}</h2>
+          <p class="descricao_card_carro">
+            {{ item.quilometragem | number : "1.1-2" }} KM / {{ item.cambio }}
+            {{ item.ano | date : "yyy" }}
+          </p>
+          <p class="preco">R$ {{ item.preco | number : "1.1-2" }}</p>
+          <div class="descricao_card_lojas">
+            <img
+              src="assets/icons/location-dot-solid.svg"
+              alt="Icone de localização"
+            />
+            <p class="loja">Disponível em {{ item.loja }}</p>
+          </div>
+        </div>
+      </a>
+    </div>
+    }} }@empty {
+    <div class="container_semCadastro">
+      <i class="fa-solid fa-triangle-exclamation" style="color: #ec1313"></i>
+      <p>Nenhum carro cadastrado.</p>
+    </div>
+    }
   </div>
 </div>

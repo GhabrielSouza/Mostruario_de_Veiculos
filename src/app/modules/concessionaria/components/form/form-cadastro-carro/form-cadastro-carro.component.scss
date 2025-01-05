@@ -41,7 +41,8 @@
     }
 
     input,
-    textarea {
+    textarea,
+    select {
       font-family: "MontSerrat", sans-serif;
       font-size: 14px;
       padding: 10px;
@@ -65,5 +66,14 @@
     border-radius: 4px;
     cursor: pointer;
     align-self: flex-end;
+  }
+
+  .form-btn {
+    display: flex;
+    gap: 30px;
+
+    & button:disabled {
+      background: var(#ddd);
+    }
   }
 }

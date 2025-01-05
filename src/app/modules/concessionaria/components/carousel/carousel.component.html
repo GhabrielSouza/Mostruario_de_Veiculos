@@ -4,7 +4,6 @@
   @for (item of imagens; track item; let i = $index ) {
   <img
     [src]="item.imagemSrc"
-    [alt]="item.imagemAlt"
     [ngClass]="{ imagem_ativa: selecionarIndex === i }"
   />
   } @if (indicadores) {
