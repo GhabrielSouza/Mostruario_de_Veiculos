@@ -8,14 +8,14 @@
 <mat-dialog-content>
   <form [formGroup]="carroForm" (ngSubmit)="httpUpdateCarro()">
     <div class="form-group">
-      <label for="nome">Escolha uma imagem</label>
+      <label for="file">Escolha uma imagem</label>
       <input
         type="file"
-        id="imagem"
-        name="imagem"
+        id="file"
+        name="file[]"
         placeholder="Selecione uma imagem"
         multiple
-        formControlName="imagem"
+        formControlName="file"
       />
     </div>
 
@@ -245,14 +245,15 @@
 <mat-dialog-content>
   <form [formGroup]="carroForm" (ngSubmit)="httpCreateCarro()">
     <div class="form-group">
-      <label for="nome">Escolha uma imagem</label>
+      <label for="file">Escolha uma imagem</label>
       <input
         type="file"
-        id="imagem"
-        name="imagem"
+        id="file"
+        name="file[]"
         placeholder="Selecione uma imagem"
         multiple
-        formControlName="imagem"
+        formControlName="file"
+        (change)="onFileSelected($event)"
       />
     </div>
 

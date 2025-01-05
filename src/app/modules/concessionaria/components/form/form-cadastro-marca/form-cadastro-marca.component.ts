@@ -27,7 +27,6 @@ export class FormCadastroMarcaComponent {
   public marcaForm = this.#fb.group({
     id: [0],
     nome: ['', [Validators.required, Validators.maxLength(255)]],
-    imagem: [, Validators.required],
   });
 
   public getData = signal<IDialogFormMarca | null>(null);
@@ -42,11 +41,7 @@ export class FormCadastroMarcaComponent {
 
   public httpCreateMarca() {
     return this.#apiService
-      .httpCreateMarcas$(
-        this.marcaForm.value.id,
-        this.marcaForm.value.nome,
-        this.marcaForm.value.imagem
-      )
+      .httpCreateMarcas$(this.marcaForm.value.id, this.marcaForm.value.nome)
       .pipe(concatMap(() => this.#apiService.httpListMarcas$()))
       .subscribe({
         next: () => {

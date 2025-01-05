@@ -37,27 +37,23 @@ export class CrudMarcasService {
 
   public httpCreateMarcas$(
     id: number | null | undefined,
-    nome: string | null | undefined,
-    imagem: File | null | undefined
+    nome: string | null | undefined
   ): Observable<IDialogFormMarca> {
     return this.#http
       .post<IDialogFormMarca>(this.#url(), {
         id,
         nome,
-        imagem,
       })
       .pipe(shareReplay());
   }
 
   public httpUpdateMarcas$(
     id: number | null | undefined,
-    nome: string | null | undefined,
-    imagem: File | null | undefined
+    nome: string | null | undefined
   ): Observable<IDialogFormMarca> {
     return this.#http
       .put<IDialogFormMarca>(`${this.#url()}/${id}`, {
         nome,
-        imagem,
       })
       .pipe(shareReplay());
   }

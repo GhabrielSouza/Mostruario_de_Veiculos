@@ -46,7 +46,7 @@ export class FormCadastroCarroComponent implements OnInit {
     itens: ['', Validators.required],
     loja: ['', Validators.required],
     marca: ['', Validators.required],
-    imagem: [, Validators.required],
+    file: [null as File | null, Validators.required],
   });
 
   public getData = signal<IDialogFormCarro | null>(null);
@@ -88,7 +88,7 @@ export class FormCadastroCarroComponent implements OnInit {
         this.carroForm.value.itens,
         this.carroForm.value.loja,
         this.carroForm.value.marca,
-        this.carroForm.value.imagem
+        this.carroForm.value.file
       )
       .pipe(concatMap(() => this.#apiService.httpListCarros$()))
       .subscribe({
@@ -104,6 +104,13 @@ export class FormCadastroCarroComponent implements OnInit {
           console.log('Requisição concluída.');
         },
       });
+  }
+
+  onFileSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      this.carroForm.patchValue({ file: input.files[0] });
+    }
   }
 
   public httpUpdateCarro() {
@@ -125,7 +132,7 @@ export class FormCadastroCarroComponent implements OnInit {
         this.carroForm.value.itens,
         this.carroForm.value.loja,
         this.carroForm.value.marca,
-        this.carroForm.value.imagem
+        this.carroForm.value.file
       )
       .pipe(concatMap(() => this.#apiService.httpListCarros$()))
       .subscribe({

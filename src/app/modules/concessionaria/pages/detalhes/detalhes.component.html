@@ -1,10 +1,17 @@
 <app-header />
 <main>
+  @defer (on viewport) {
   <section>
-    <app-carousel [imagens]="imagens()" [autoSlide]="true" />
+    @for (item of getListCarrosId(); track $index) { @if (item.file) {
+    <img [src]="item.file" [alt]="item.nome" />
+    } }
+    <!-- <app-carousel #showcarousel [imagens]="imagens()" [autoSlide]="true" /> -->
   </section>
   <section>
     <app-card-carro-individual />
   </section>
+  }@placeholder {
+  <h2>Carregando todos os componentes</h2>
+  }
 </main>
 <app-footer />

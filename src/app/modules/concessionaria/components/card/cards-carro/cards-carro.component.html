@@ -5,7 +5,11 @@
     "Novo"){ @if (isListagemDeVeiculos()) {
 
     <div class="card">
+      @if(item.file){
+      <img class="imagem_carro" [src]="item.file" [alt]="item.nome" />
+      }@else {
       <app-carousel [imagens]="imagens()" />
+      }
       <div class="btn_Card">
         <button
           class="btn-edit"
@@ -33,12 +37,12 @@
             </div>
             <a class="botao" href="#">Ver parcelas</a>
           </div>
-          <h2 class="titulo_carro">{{ item.nome }}</h2>
+
           <p class="descricao_card_carro">
-            {{ item.quilometragem }} KM / {{ item.cambio }}
+            {{ item.quilometragem | number : "1.1-2" }} KM / {{ item.cambio }}
             {{ item.ano | date : "yyy" }}
           </p>
-          <p class="preco">R$ {{ item.preco }}</p>
+          <p class="preco">R$ {{ item.preco | number : "1.1-2" }}</p>
           <div class="descricao_card_lojas">
             <img
               src="assets/icons/location-dot-solid.svg"
@@ -52,7 +56,11 @@
     }@else {
 
     <div class="card">
+      @if(item.file){
+      <img class="imagem_carro" [src]="item.file" [alt]="item.nome" />
+      }@else {
       <app-carousel [imagens]="imagens()" />
+      }
       <a
         [routerLink]="['/detalhes', item.id]"
         routerLinkActive="router-link-active"
@@ -66,10 +74,10 @@
           </div>
           <h2 class="titulo_carro">{{ item.nome }}</h2>
           <p class="descricao_card_carro">
-            {{ item.quilometragem }} KM / cambio...
+            {{ item.quilometragem | number : "1.1-2" }} KM / {{ item.cambio }}
             {{ item.ano | date : "yyy" }}
           </p>
-          <p class="preco">R$ {{ item.preco }}</p>
+          <p class="preco">R$ {{ item.preco | number : "1.1-2" }}</p>
           <div class="descricao_card_lojas">
             <img
               src="assets/icons/location-dot-solid.svg"
@@ -92,7 +100,11 @@
     @for (item of getListCarros(); track item) { @if(item.estadoDoCarro ===
     "Semi novo"){ @if (isListagemDeVeiculos()) {
     <div class="card">
+      @if(item.file){
+      <img class="imagem_carro" [src]="item.file" [alt]="item.nome" />
+      }@else {
       <app-carousel [imagens]="imagens()" />
+      }
       <div class="btn_Card">
         <button
           class="btn-edit"
@@ -117,12 +129,13 @@
             </div>
             <a class="botao" href="#">Ver parcelas</a>
           </div>
+
           <h2 class="titulo_carro">{{ item.nome }}</h2>
           <p class="descricao_card_carro">
-            {{ item.quilometragem }} KM / {{ item.cambio }}
+            {{ item.quilometragem | number : "1.1-2" }} KM / {{ item.cambio }}
             {{ item.ano | date : "yyy" }}
           </p>
-          <p class="preco">R$ {{ item.preco }}</p>
+          <p class="preco">R$ {{ item.preco | number : "1.1-2" }}</p>
           <div class="descricao_card_lojas">
             <img
               src="assets/icons/location-dot-solid.svg"
@@ -136,7 +149,11 @@
     }@else {
 
     <div class="card">
+      @if(item.file){
+      <img class="imagem_carro" [src]="item.file" [alt]="item.nome" />
+      }@else {
       <app-carousel [imagens]="imagens()" />
+      }
       <a
         [routerLink]="['/detalhes', item.id]"
         routerLinkActive="router-link-active"
@@ -150,10 +167,10 @@
           </div>
           <h2 class="titulo_carro">{{ item.nome }}</h2>
           <p class="descricao_card_carro">
-            {{ item.quilometragem }} KM / cambio...
+            {{ item.quilometragem | number : "1.1-2" }} KM / {{ item.cambio }}
             {{ item.ano | date : "yyy" }}
           </p>
-          <p class="preco">R$ {{ item.preco }}</p>
+          <p class="preco">R$ {{ item.preco | number : "1.1-2" }}</p>
           <div class="descricao_card_lojas">
             <img
               src="assets/icons/location-dot-solid.svg"

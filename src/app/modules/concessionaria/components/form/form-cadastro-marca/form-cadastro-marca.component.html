@@ -6,18 +6,6 @@
 </header>
 <mat-dialog-content>
   <form [formGroup]="marcaForm" (ngSubmit)="httpCreateMarca()">
-    <!-- Imagem -->
-    <div class="form-group">
-      <label for="ftMarca">Escolha uma imagem</label>
-      <input
-        type="file"
-        id="ftMarca"
-        name="ftMarca"
-        required
-        formControlName="imagem"
-      />
-    </div>
-
     <!-- Nome da Marca -->
     <div class="form-group">
       <label for="nome_marca">Nome da Marca</label>

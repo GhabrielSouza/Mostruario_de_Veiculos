@@ -2,7 +2,7 @@
   <div class="container_footer_links">
     <div class="container_footer_links_item">
       <div class="container_footer_links_item_titulo">
-        <h1>AutoHorizonte</h1>
+        <h1>Grupo Sinal</h1>
       </div>
       <div class="container_footer_links_item_nav">
         <ul>
@@ -30,7 +30,9 @@
       <div class="container_footer_links_item_link">
         <ul>
           <li><a href="">Quem somos</a></li>
-          <li><a href="">Nossas lojas</a></li>
+          <li>
+            <a [routerLink]="['/lojas']">Nossas lojas</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -40,7 +42,9 @@
       </div>
       <div class="container_footer_links_item_link">
         <ul>
-          <li><a href="">Fale conosco</a></li>
+          <li>
+            <a [routerLink]="['/contatos']">Fale conosco</a>
+          </li>
           <li><a href="">Trabalhe conosco</a></li>
           <li><a href="">contato&#64;autohorizonte.com.br</a></li>
         </ul>
@@ -48,6 +52,6 @@
     </div>
   </div>
   <div class="container_copy">
-    <p>AutoHorizonte Copyright&copy;{{ date() | date : "yyy" }}</p>
+    <p>Grupo Sinal Copyright&copy;{{ date() | date : "yyy" }}</p>
   </div>
 </div>

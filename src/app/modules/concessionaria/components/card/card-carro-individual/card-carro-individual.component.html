@@ -6,8 +6,8 @@
     <!-- titulo e logo do carro -->
     @for (item of getListCarrosId(); track item) {
     <div class="descricao_marca">
-      <img src="" alt="Logo do carro" />
       <div class="descricao_marca_titulo">
+        <p>{{ item.marca }}</p>
         <h2>{{ item.nome }} {{ item.ano }} {{ item.cor }}</h2>
         <p>{{ item.cilindradas }}</p>
       </div>
@@ -35,7 +35,7 @@
       <div class="descricao_detalhes_quilometragem">
         <h4>Quilometragem</h4>
         <p>
-          <strong>{{ item.quilometragem }}</strong>
+          <strong>{{ item.quilometragem | number : "1.1-2" }}</strong>
         </p>
       </div>
       <div class="descricao_detalhes_cambio">

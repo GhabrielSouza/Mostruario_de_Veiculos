@@ -52,27 +52,34 @@ export class GetCarrosService {
     itens: string | null | undefined,
     loja: string | null | undefined,
     marca: string | null | undefined,
-    imagem: File | null | undefined
+    file: File | null | undefined
   ): Observable<IDialogFormCarro> {
+    const formData = new FormData();
+
+    // Adicionar campos de texto
+    formData.append('nome', nome || '');
+    formData.append('modelo', modelo || '');
+    formData.append('ano', ano?.toString() || '');
+    formData.append('cor', cor || '');
+    formData.append('preco', preco?.toString() || '');
+    formData.append('quilometragem', quilometragem?.toString() || '');
+    formData.append('cilindradas', cilindradas?.toString() || '');
+    formData.append('estadoDoCarro', estadoDoCarro || '');
+    formData.append('cambio', cambio || '');
+    formData.append('finalDaPlaca', finalDaPlaca?.toString() || '');
+    formData.append('descricao', descricao || '');
+    formData.append('combustivel', combustivel || '');
+    formData.append('itens', itens || '');
+    formData.append('loja', loja || '');
+    formData.append('marca', marca || '');
+
+    // Adicionar arquivo, se existir
+    if (file) {
+      formData.append('imagem', file, file.name);
+    }
+
     return this.#http
-      .post<IDialogFormCarro>(this.#url(), {
-        nome,
-        modelo,
-        ano,
-        cor,
-        preco,
-        quilometragem,
-        cilindradas,
-        estadoDoCarro,
-        cambio,
-        finalDaPlaca,
-        descricao,
-        combustivel,
-        itens,
-        loja,
-        marca,
-        imagem,
-      })
+      .post<IDialogFormCarro>(this.#url(), formData)
       .pipe(shareReplay());
   }
 
@@ -93,27 +100,34 @@ export class GetCarrosService {
     itens: string | null | undefined,
     loja: string | null | undefined,
     marca: string | null | undefined,
-    imagem: File | null | undefined
+    file: File | null | undefined
   ): Observable<IDialogFormCarro> {
+    const formData = new FormData();
+
+    // Adicionar campos de texto
+    formData.append('nome', nome || '');
+    formData.append('modelo', modelo || '');
+    formData.append('ano', ano?.toString() || '');
+    formData.append('cor', cor || '');
+    formData.append('preco', preco?.toString() || '');
+    formData.append('quilometragem', quilometragem?.toString() || '');
+    formData.append('cilindradas', cilindradas?.toString() || '');
+    formData.append('estadoDoCarro', estadoDoCarro || '');
+    formData.append('cambio', cambio || '');
+    formData.append('finalDaPlaca', finalDaPlaca?.toString() || '');
+    formData.append('descricao', descricao || '');
+    formData.append('combustivel', combustivel || '');
+    formData.append('itens', itens || '');
+    formData.append('loja', loja || '');
+    formData.append('marca', marca || '');
+
+    // Adicionar arquivo, se existir
+    if (file) {
+      formData.append('imagem', file, file.name);
+    }
+
     return this.#http
-      .put<IDialogFormCarro>(`${this.#url()}/${id}`, {
-        nome,
-        modelo,
-        ano,
-        cor,
-        preco,
-        quilometragem,
-        cilindradas,
-        estadoDoCarro,
-        cambio,
-        finalDaPlaca,
-        descricao,
-        combustivel,
-        itens,
-        loja,
-        marca,
-        imagem,
-      })
+      .put<IDialogFormCarro>(this.#url(), formData)
       .pipe(shareReplay());
   }
 
